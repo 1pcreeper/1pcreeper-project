@@ -1,0 +1,22 @@
+server:
+    port: ${GENERAL_API_GATEWAY_SERVER_PORT}
+spring:
+  application:
+    name: general-api-gateway
+  main:
+    web-application-type: reactive
+  config:
+    import: configserver:http://${GENERAL_CONFIG_MAPPING_SERVER_IP_ADDRESS}:${GENERAL_CONFIG_MAPPING_SERVER_PORT}
+  cloud:
+      config:
+          username: ${GENERAL_CONFIG_MAPPING_SECURITY_USERNAME}
+          password: ${GENERAL_CONFIG_MAPPING_SECURITY_PASSWORD}
+logging:
+    level:
+        org.springframework.cloud.gateway: DEBUG
+properties:
+    spec:
+        general-account-service:
+            hostName: ${GENERAL_ACCOUNT_SERVICE_SERVER_HOSTNAME}
+            httpPort: ${GENERAL_ACCOUNT_SERVICE_SERVER_PORT}
+            grpcPort: ${GENERAL_ACCOUNT_SERVICE_GRPC_PORT}

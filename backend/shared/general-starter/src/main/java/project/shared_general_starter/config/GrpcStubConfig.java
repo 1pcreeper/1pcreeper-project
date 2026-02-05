@@ -16,10 +16,10 @@ import java.util.Map;
 
 @Configuration
 public class GrpcStubConfig {
-    @Value("${grpc.client.user-account-service.address}")
-    private String userAccountServiceAddress;
-    @Value("${grpc.client.user-account-service.port}")
-    private int userAccountServicePort;
+    @Value("${grpc.client.general-account-service.address}")
+    private String generalAccountServiceAddress;
+    @Value("${grpc.client.general-account-service.port}")
+    private int generalAccountServicePort;
     @Autowired
     private EurekaClient eurekaClient;
 
@@ -27,12 +27,12 @@ public class GrpcStubConfig {
     public ManagedChannel userAccountServiceManagedChannel() {
         String host;
         try {
-            InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka(userAccountServiceAddress, false);
+            InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka(generalAccountServiceAddress, false);
             host = instanceInfo.getIPAddr();
         } catch (Exception e) {
-            host = userAccountServiceAddress;
+            host = generalAccountServiceAddress;
         }
-        return ManagedChannelBuilder.forAddress(host, userAccountServicePort)
+        return ManagedChannelBuilder.forAddress(host, generalAccountServicePort)
             .usePlaintext()
             .enableRetry()
             .defaultServiceConfig(buildServiceConfig())

@@ -10,9 +10,28 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
-        <module name="shared-general-starter" />
-        <module name="general-service-registry" />
         <module name="general-config-mapping" />
+        <module name="general-api-gateway" />
+      </profile>
+      <profile name="Annotation profile for general-service-registry" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="general-service-registry" />
+      </profile>
+      <profile name="Annotation profile for shared-general-starter" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="shared-general-starter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +41,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-mapping" options="-parameters" />
+      <module name="general-api-gateway" options="-parameters" />
       <module name="general-config-mapping" options="-parameters" />
       <module name="general-service-registry" options="-parameters" />
       <module name="project" options="-parameters" />

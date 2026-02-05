@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: general-config-mapping
+  security:
+      user:
+          name: ${GENERAL_CONFIG_MAPPING_SECURITY_USERNAME}
+          password: ${GENERAL_CONFIG_MAPPING_SECURITY_PASSWORD}
   cloud:
       config:
           server:

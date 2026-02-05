@@ -33,6 +33,7 @@
 	<modules>
 		<module>general/service-registry</module>
         <module>general/config-mapping</module>
+        <module>general/api-gateway</module>
         <module>shared/general-starter</module>
 	</modules>
 
