@@ -15,7 +15,5 @@ eureka:
     client:
         register-with-eureka: true
         fetch-registry: true
-        healthcheck:
-            enabled: true
         serviceUrl:
             defaultZone: http://${GENERAL_SERVICE_REGISTRY_SERVER_IP_ADDRESS}:${GENERAL_SERVICE_REGISTRY_SERVER_PORT}/eureka
