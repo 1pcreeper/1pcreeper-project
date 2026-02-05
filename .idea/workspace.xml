@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0afa3aac-8082-436c-a4a6-f200c00f42fb" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;1pcreeper&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/1pcreeper/1pcreeper-project&quot;,
+    &quot;accountId&quot;: &quot;aaedbad7-f1e6-43fa-bdd7-b214be4e9cc6&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="38x22dsTUH6kaDhkQXctRZi0xUW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GeneralConfigMappingApplication.executor": "Run",
+    "Application.GeneralServiceRegistryApplication .executor": "Run",
+    "Application.project.general_service_registry.GeneralServiceRegistryApplication .executor": "Run",
+    "Maven.config-mapping [clean].executor": "Run",
+    "Maven.config-mapping [install].executor": "Run",
+    "Maven.general-service-registry [clean].executor": "Run",
+    "Maven.general-service-registry [install].executor": "Run",
+    "Maven.project [clean].executor": "Run",
+    "Maven.project [install].executor": "Run",
+    "Maven.shared-general-starter [clean].executor": "Run",
+    "Maven.shared-general-starter [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Favorites/Code/1pcreeper/projects/001 Project/codes/current/1pcreeper-project/backend/pom.xml",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15625",
+    "project.structure.side.proportion": "0.3034483"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Favorites\Code\1pcreeper\projects\001 Project\codes\current\1pcreeper-project\backend\general\config-mapping\src\main\java" />
+      <recent name="D:\Favorites\Code\1pcreeper\projects\001 Project\codes\current\1pcreeper-project\backend\general\service-registry\src\main\java" />
+      <recent name="D:\Favorites\Code\1pcreeper\projects\001 Project\codes\current\1pcreeper-project\backend\shared\common-library\src\main\java\project" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GeneralConfigMappingApplication">
+    <list>
+      <item itemvalue="Application.GeneralServiceRegistryApplication " />
+      <item itemvalue="Application.GeneralConfigMappingApplication" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0afa3aac-8082-436c-a4a6-f200c00f42fb" name="Changes" comment="" />
+      <created>1769726695816</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769726695816</updated>
+    </task>
+    <servers />
+  </component>
+</project>

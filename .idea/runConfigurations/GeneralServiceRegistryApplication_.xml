@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GeneralServiceRegistryApplication " type="Application" factoryName="Application">
+    <option name="envFilePaths">
+      <option value="$PROJECT_DIR$/.env.local" />
+    </option>
+    <option name="MAIN_CLASS_NAME" value="project.general_service_registry.GeneralServiceRegistryApplication" />
+    <module name="general-service-registry" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
