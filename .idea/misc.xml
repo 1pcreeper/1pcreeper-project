@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/backend/shared/general-starter/pom.xml" />
         <option value="$PROJECT_DIR$/backend/general/config-mapping/pom.xml" />
         <option value="$PROJECT_DIR$/backend/general/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/shared/general-auth-library/pom.xml" />
       </list>
     </option>
   </component>

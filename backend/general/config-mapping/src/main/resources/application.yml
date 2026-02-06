@@ -21,3 +21,6 @@ eureka:
         fetch-registry: true
         serviceUrl:
             defaultZone: http://${GENERAL_SERVICE_REGISTRY_SERVER_IP_ADDRESS}:${GENERAL_SERVICE_REGISTRY_SERVER_PORT}/eureka
+grpc:
+    server:
+        port: ${GENERAL_CONFIG_MAPPING_GRPC_PORT}

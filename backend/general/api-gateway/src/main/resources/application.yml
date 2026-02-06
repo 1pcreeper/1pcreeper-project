@@ -11,6 +11,11 @@ spring:
       config:
           username: ${GENERAL_CONFIG_MAPPING_SECURITY_USERNAME}
           password: ${GENERAL_CONFIG_MAPPING_SECURITY_PASSWORD}
+  security:
+      oauth2:
+          resourceserver:
+              jwt:
+                  issuer-uri: ${GENERAL_API_GATEWAY_JWT_ISSUER_LOCATION}
 logging:
     level:
         org.springframework.cloud.gateway: DEBUG
@@ -20,3 +25,10 @@ properties:
             hostName: ${GENERAL_ACCOUNT_SERVICE_SERVER_HOSTNAME}
             httpPort: ${GENERAL_ACCOUNT_SERVICE_SERVER_PORT}
             grpcPort: ${GENERAL_ACCOUNT_SERVICE_GRPC_PORT}
+    jwt:
+        issuer-uri: ${GENERAL_API_GATEWAY_JWT_ISSUER_LOCATION}
+    cors:
+        allowed-origins:  ${GENERAL_API_GATEWAY_CORS_ALLOWED_ORIGINS}
+grpc:
+    server:
+        port: ${GENERAL_API_GATEWAY_GRPC_PORT}
