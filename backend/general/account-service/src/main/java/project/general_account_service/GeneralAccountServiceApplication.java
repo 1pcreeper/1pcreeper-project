@@ -1,20 +1,19 @@
-package project.general_api_gateway;
+package project.general_account_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.gateway.config.GatewayAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan(basePackages = {
-    "project.shared_general_starter",
+    "project.general_account_service",
     "project.shared_general_auth_starter",
-    "project.general_api_gateway"
+    "project.shared_general_starter"
 })
-public class GeneralAPIGatewayApplication {
+public class GeneralAccountServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GeneralAPIGatewayApplication.class, args);
+        SpringApplication.run(GeneralAccountServiceApplication.class, args);
     }
 }

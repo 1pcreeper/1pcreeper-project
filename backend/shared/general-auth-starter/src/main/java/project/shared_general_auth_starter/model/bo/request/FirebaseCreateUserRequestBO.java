@@ -1,4 +1,4 @@
-package project.shared_general_auth_library.model.bo.request;
+package project.shared_general_auth_starter.model.bo.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

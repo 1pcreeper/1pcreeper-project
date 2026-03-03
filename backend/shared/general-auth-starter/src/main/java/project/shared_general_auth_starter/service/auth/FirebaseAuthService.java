@@ -1,4 +1,4 @@
-package project.shared_general_auth_library.service.auth;
+package project.shared_general_auth_starter.service.auth;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -6,8 +6,8 @@ import com.google.firebase.auth.FirebaseToken;
 import com.google.firebase.auth.UserRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import project.shared_general_auth_library.constant.FirebaseClaimKeysConstant;
-import project.shared_general_auth_library.model.bo.request.FirebaseCreateUserRequestBO;
+import project.shared_general_auth_starter.constant.FirebaseClaimKeysConstant;
+import project.shared_general_auth_starter.model.bo.request.FirebaseCreateUserRequestBO;
 
 import java.util.List;
 import java.util.Map;

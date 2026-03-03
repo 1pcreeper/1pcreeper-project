@@ -8,7 +8,7 @@
         <version>1.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>shared-general-auth-library</artifactId>
+    <artifactId>shared-general-auth-starter</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>project</groupId>
-            <artifactId>shared-general-auth-library</artifactId>
+            <artifactId>shared-general-auth-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>

@@ -43,6 +43,7 @@ public class SecurityConfig {
             .authorizeExchange(exchanges -> exchanges
                 // Allow public access to certain paths, e.g., login or health checks
                 .pathMatchers("/api/public/**").permitAll()
+                .pathMatchers("/api/account/**").permitAll()
                 // Secure all other routes
                 .anyExchange().authenticated()
             )

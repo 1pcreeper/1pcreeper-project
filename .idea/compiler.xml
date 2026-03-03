@@ -9,12 +9,21 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="shared-general-starter" />
         <module name="general-api-gateway" />
-        <module name="general-config-mapping" />
-        <module name="shared-general-auth-library" />
         <module name="general-service-registry" />
+        <module name="general-account-service" />
+      </profile>
+      <profile name="Annotation profile for shared-general-auth-starter" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="shared-general-auth-starter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,11 +33,12 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-mapping" options="-parameters" />
+      <module name="general-account-service" options="-parameters" />
       <module name="general-api-gateway" options="-parameters" />
       <module name="general-config-mapping" options="-parameters" />
       <module name="general-service-registry" options="-parameters" />
       <module name="project" options="-parameters" />
-      <module name="shared-general-auth-library" options="-parameters" />
+      <module name="shared-general-auth-starter" options="-parameters" />
       <module name="shared-general-starter" options="-parameters" />
     </option>
   </component>

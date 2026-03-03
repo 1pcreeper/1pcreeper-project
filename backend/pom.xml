@@ -34,8 +34,9 @@
 		<module>general/service-registry</module>
         <module>general/config-mapping</module>
         <module>general/api-gateway</module>
+        <module>general/account-service</module>
         <module>shared/general-starter</module>
-        <module>shared/general-auth-library</module>
+        <module>shared/general-auth-starter</module>
 	</modules>
 
 	<properties>

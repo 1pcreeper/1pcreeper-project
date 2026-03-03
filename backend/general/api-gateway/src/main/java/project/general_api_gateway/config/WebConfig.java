@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import project.shared_general_auth_library.interceptor.AuthInterceptor;
+import project.shared_general_auth_starter.interceptor.AuthInterceptor;
 import project.general_api_gateway.properties.CorsProperties;
 
 @Configuration

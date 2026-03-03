@@ -1,4 +1,4 @@
-package project.shared_general_auth_library.config;
+package project.shared_general_auth_starter.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;

@@ -20,7 +20,7 @@ public class GatewayConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
             // Route for account service
-            .route("account", r -> r.path("/api/account/**") 
+            .route("account", r -> r.path("/api/account/**")
                 .filters(f -> f
                     .filter(logPath())  
                     .rewritePath("/api/account/(?<segment>.*)", "/${segment}")) 
