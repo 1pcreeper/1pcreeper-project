@@ -1,0 +1,301 @@
+services:
+    # Services ============================================================================================
+    user_account_db:
+        container_name: user_account_db
+        hostname: user_account_db
+        build:
+            context: ./docker/dockerfile/user_account_db
+            dockerfile: Dockerfile
+        ports:
+            - 5432:5432
+        expose:
+            - "5432"
+        environment:
+            POSTGRES_USER: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_USER}
+            POSTGRES_PASSWORD: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_PASSWORD}
+            POSTGRES_DB: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_DB}
+        volumes:
+            - ./docker/volume/user_account_db:/var/shared/postgresql/data
+        networks:
+            - user_network
+        restart: always
+        stdin_open: true
+        tty: true
+    user_mission_db:
+        container_name: user_mission_db
+        hostname: user_mission_db
+        build:
+            context: ./docker/dockerfile/user_mission_db
+            dockerfile: Dockerfile
+        ports:
+            - 5433:5432
+        expose:
+            - "5432"
+        environment:
+            POSTGRES_USER: ${DOCKER_USER_MISSION_DB_POSTGRES_USER}
+            POSTGRES_PASSWORD: ${DOCKER_USER_MISSION_DB_POSTGRES_PASSWORD}
+            POSTGRES_DB: ${DOCKER_USER_MISSION_DB_POSTGRES_DB}
+        volumes:
+            - ./docker/volume/user_mission_db:/var/shared/postgresql/data
+        networks:
+            - user_network
+        restart: always
+        stdin_open: true
+        tty: true
+    user_booking_db:
+        container_name: user_booking_db
+        hostname: user_booking_db
+        build:
+            context: ./docker/dockerfile/user_booking_db
+            dockerfile: Dockerfile
+        ports:
+            - 5434:5432
+        expose:
+            - "5432"
+        environment:
+            POSTGRES_USER: ${DOCKER_USER_BOOKING_DB_POSTGRES_USER}
+            POSTGRES_PASSWORD: ${DOCKER_USER_BOOKING_DB_POSTGRES_PASSWORD}
+            POSTGRES_DB: ${DOCKER_USER_BOOKING_DB_POSTGRES_DB}
+        volumes:
+            - ./docker/volume/user_booking_db:/var/shared/postgresql/data
+        networks:
+            - user_network
+        restart: always
+        stdin_open: true
+        tty: true
+    user_payment_db:
+        container_name: user_payment_db
+        hostname: user_payment_db
+        build:
+            context: ./docker/dockerfile/user_payment_db
+            dockerfile: Dockerfile
+        ports:
+            - 5435:5432
+        expose:
+            - "5432"
+        environment:
+            POSTGRES_USER: ${DOCKER_USER_PAYMENT_DB_POSTGRES_USER}
+            POSTGRES_PASSWORD: ${DOCKER_USER_PAYMENT_DB_POSTGRES_PASSWORD}
+            POSTGRES_DB: ${DOCKER_USER_PAYMENT_DB_POSTGRES_DB}
+        volumes:
+            - ./docker/volume/user_payment_db:/var/shared/postgresql/data
+        networks:
+            - user_network
+        restart: always
+        stdin_open: true
+        tty: true
+    # user_account_service:
+    #     container_name: user_account_service
+    #     hostname: user_account_service
+    #     build:
+    #         context: .
+    #         dockerfile: user-account-service-Dockerfile
+    #     ports:
+    #         - "${USER_ACCOUNT_SERVICE_SERVER_PORT}:8080"
+    #     expose:
+    #         - "8080"
+    #     environment:
+    #         DOCKER_USER_ACCOUNT_DB_POSTGRES_SERVER: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_SERVER}
+    #         DOCKER_USER_ACCOUNT_DB_POSTGRES_DB: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_DB}
+    #         DOCKER_USER_ACCOUNT_DB_POSTGRES_PORT: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_PORT}
+    #         DOCKER_USER_ACCOUNT_DB_POSTGRES_USER: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_USER}
+    #         DOCKER_USER_ACCOUNT_DB_POSTGRES_PASSWORD: ${DOCKER_USER_ACCOUNT_DB_POSTGRES_PASSWORD}
+    #         USER_ACCOUNT_SERVICE_SERVER_PORT: ${USER_ACCOUNT_SERVICE_SERVER_PORT}
+    #         USER_ACCOUNT_SERVICE_SECURITY_PROPERTIES_CORS_SOURCE: ${USER_ACCOUNT_SERVICE_SECURITY_PROPERTIES_CORS_SOURCE}
+    #         USER_ACCOUNT_SERVICE_SECURITY_PROPERTIES_ISSUER_LOCATION: ${USER_ACCOUNT_SERVICE_SECURITY_PROPERTIES_ISSUER_LOCATION}
+    #         USER_ACCOUNT_SERVICE_SECURITY_PROPERTIES_COOKIE_SECURE: ${USER_ACCOUNT_SERVICE_SECURITY_PROPERTIES_COOKIE_SECURE}
+    #         USER_ACCOUNT_SERVICE_ACCESS_PROPERTIES_ROOT_PASSWORD: ${USER_ACCOUNT_SERVICE_ACCESS_PROPERTIES_ROOT_PASSWORD}
+    #     networks:
+    #         - user_network
+    #     restart: always
+    #     stdin_open: true
+    #     tty: true
+    #     depends_on:
+    #         - user_account_db
+    #  Tools ==========================================================================================================
+    user_tool_adminer:
+        container_name: user_tool_adminer
+        hostname: user_tool_adminer
+        image: adminer:latest
+        ports:
+            - "8090:8080"
+        expose:
+            - "8080"
+        environment:
+            ADMINER_DEFAULT_SERVER: user_account_db
+        networks:
+            - user_network
+        restart: always
+        stdin_open: true
+        tty: true
+    user_tool_kafka_ui:
+        container_name: user_tool_kafka_ui
+        hostname: user_tool_kafka_ui
+        image: provectuslabs/kafka-ui:latest
+        ports:
+            - 8091:8080
+        expose:
+            - "8080"
+        networks:
+            - user_network
+        restart: always
+        stdin_open: true
+        tty: true
+        depends_on:
+            - user_kafka_schema_registry
+        environment:
+            DYNAMIC_CONFIG_ENABLED: "true"
+    #  Utilities ==========================================================================================================
+    user_zookeeper1:
+        image: confluentinc/cp-zookeeper:7.8.0
+        hostname: user_zookeeper1
+        container_name: user_zookeeper1
+        ports:
+            - "2181:2181"
+        expose:
+            - "2181"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_SERVER_ID: 1
+            ZOOKEEPER_SERVERS: user_zookeeper1:2888:3888;user_zookeeper2:2888:3888;user_zookeeper3:2888:3888
+    user_zookeeper2:
+        image: confluentinc/cp-zookeeper:7.8.0
+        hostname: user_zookeeper2
+        container_name: user_zookeeper2
+        ports:
+            - "2182:2181"
+        expose:
+            - "2181"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_SERVER_ID: 2
+            ZOOKEEPER_SERVERS: user_zookeeper1:2888:3888;user_zookeeper2:2888:3888;user_zookeeper3:2888:3888
+    user_zookeeper3:
+        image: confluentinc/cp-zookeeper:7.8.0
+        hostname: user_zookeeper3
+        container_name: user_zookeeper3
+        ports:
+            - "2183:2181"
+        expose:
+            - "2181"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_SERVER_ID: 3
+            ZOOKEEPER_SERVERS: user_zookeeper1:2888:3888;user_zookeeper2:2888:3888;user_zookeeper3:2888:3888
+    user_kafka1:
+        image: confluentinc/cp-kafka:7.8.0
+        hostname: user_kafka1
+        container_name: user_kafka1
+        ports:
+            - "9091:9092"
+            - "29091:29092"
+        expose:
+            - "9092"
+            - "29092"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: INTERNAL://user_kafka1:29092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9091,DOCKER://host.docker.internal:29091
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+            KAFKA_ZOOKEEPER_CONNECT: "user_zookeeper1:2181,user_zookeeper2:2181,user_zookeeper3:2181"
+            KAFKA_BROKER_ID: 1
+            KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+            KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+            KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+            KAFKA_REPLICATION_FACTOR: 3
+        depends_on:
+            - user_zookeeper1
+            - user_zookeeper2
+            - user_zookeeper3
+    user_kafka2:
+        image: confluentinc/cp-kafka:7.8.0
+        hostname: user_kafka2
+        container_name: user_kafka2
+        ports:
+            - "9093:9092"
+            - "29093:29092"
+        expose:
+            - "9092"
+            - "29092"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: INTERNAL://user_kafka2:29092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9093,DOCKER://host.docker.internal:29093
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+            KAFKA_ZOOKEEPER_CONNECT: "user_zookeeper1:2181,user_zookeeper2:2181,user_zookeeper3:2181"
+            KAFKA_BROKER_ID: 2
+            KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+            KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+            KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+            KAFKA_REPLICATION_FACTOR: 3
+        depends_on:
+            - user_zookeeper1
+            - user_zookeeper2
+            - user_zookeeper3
+    user_kafka3:
+        image: confluentinc/cp-kafka:7.8.0
+        hostname: user_kafka3
+        container_name: user_kafka3
+        ports:
+            - "9094:9092"
+            - "29094:29092"
+        expose:
+            - "9092"
+            - "29092"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: INTERNAL://user_kafka3:29092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9094,DOCKER://host.docker.internal:29094
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+            KAFKA_ZOOKEEPER_CONNECT: "user_zookeeper1:2181,user_zookeeper2:2181,user_zookeeper3:2181"
+            KAFKA_BROKER_ID: 3
+            KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+            KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
+            KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+            KAFKA_REPLICATION_FACTOR: 3
+        depends_on:
+            - user_zookeeper1
+            - user_zookeeper2
+            - user_zookeeper3
+    user_kafka_schema_registry:
+        image: confluentinc/cp-schema-registry:7.8.0
+        hostname: user_kafka_schema_registry
+        container_name: user_kafka_schema_registry
+        depends_on:
+            - user_zookeeper1
+            - user_zookeeper2
+            - user_zookeeper3
+            - user_kafka1
+            - user_kafka2
+            - user_kafka3
+        ports:
+            - "8092:8081"
+        expose:
+            - "8081"
+        networks:
+            - user_network
+        restart: always
+        environment:
+            SCHEMA_REGISTRY_HOST_NAME: user_kafka_schema_registry
+            SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "PLAINTEXT://user_kafka1:29092,PLAINTEXT://user_kafka2:29092,PLAINTEXT://user_kafka3:29092"
+            SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+#  Settings ==========================================================================================================
+networks:
+    user_network:
+        name: user_network
+        driver: bridge
